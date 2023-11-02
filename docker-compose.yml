@@ -1,0 +1,19 @@
+version: '3'
+services:
+  graphql-search:
+    build:
+      context: ./GraphQLServer
+      dockerfile: Dockerfile
+    container_name: GraphqlService
+    entrypoint: npm run start
+    expose:
+      - "4000"
+    ports:
+      - 4000:4000
+    volumes:
+      - ./GraphQLServer:/home/node/app
+      - GraphQLServer_node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app
+
+volumes:
+  GraphQLServer_node_modules:
